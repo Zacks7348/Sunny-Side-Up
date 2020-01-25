@@ -15,5 +15,5 @@ def graph(csv_file, city):
     data = pd.read_csv(csv_file)
     print(data[["datetime", city]])
 
-graph("kaggle/temperature.csv", "Vancouver")
-    
+graph("kaggle/temperature.csv", "Miami")
+
