@@ -8,7 +8,7 @@ from utils import parse_datetime, kelvin_to_farenheit, average_list, pad_floats
 
 def create_axes(data, data_type):
     def parse_data(value, data_type):
-        if data_type == "temperature":
+        if data_type == "Temperature":
             return kelvin_to_farenheit(value)
         return pad_floats(value)
     data_x = data[data.columns[0]].to_list()
