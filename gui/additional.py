@@ -28,6 +28,7 @@ class buttons(ttk.Frame):
         # 'See Code' button
         codeBtn = ttk.Button(text='See Data')
         codeBtn['compound'] = LEFT
+        codeBtn = 
         codeBtn.focus()
                  
         # position and register widgets as children of this frame
