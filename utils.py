@@ -14,4 +14,7 @@ def average_list(list):
     for i in list:
         sum+=i
     return float("{:.2f}".format(sum/len(list)))
+
+def pad_floats(n):
+    return float("{:.2f}".format(n))
     

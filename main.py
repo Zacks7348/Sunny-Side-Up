@@ -7,7 +7,11 @@ import plotter as p
 # PREDICT ???
 # ACCEPT AWARDS AND GTFO OUT OF HERE
 
-data = fetch_data("temperature", "Miami", 2015)
+dataset = input("Enter dataset: ")
+city = input("Enter city: ")
+year = input("Enter year: ")
+
+data = fetch_data(dataset, city, year)
 x, y = p.create_axis(data, "temperature")
 
-p.graph("Temperatures in Miami: 2015", "Dates", "Temperatures (F)", x, y)
+p.graph(x, y, dataset, city, year)
