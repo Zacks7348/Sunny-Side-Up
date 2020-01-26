@@ -4,12 +4,12 @@ import plotter as p
 
 #Takes in user input and plots data
 
-year, dataset, city = run()
+year1, year2, dataset, city = run()
 x = []
 y = []
 years = []
-years.append(year)
-years.append(str(int(year)+1))
+years.append(year1)
+years.append(year2)
 data1 = fetch_data(dataset, city, years[0])
 data2 = fetch_data(dataset, city, years[1])
 temp1, temp2 = p.create_axes(data1, dataset)
