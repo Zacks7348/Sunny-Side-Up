@@ -1,7 +1,7 @@
 """
 Sunny Side Up
 
-Date Modified:  January 26, 20202
+Date Modified:  January 26, 2020
 Author: Zacks7348, Lvis47, Lfigu042
 """
 
@@ -11,22 +11,21 @@ from data import get_cities #import city list from data.py which pulls from data
 from tkinter.simpledialog import Dialog
 from PIL import Image, ImageTk #for image input
 import inspect
-import asyncio
 
-class ComboBoxDemo(ttk.Frame): 
+class ui(ttk.Frame): 
     """
     Represents GUI window. Main class for all frame data
     """  
-    def __init__(self, isapp=True, name='ssu'):
+    def __init__(self, app=True, name='ssu'):
         """
         Initializes GUI window
-        :param isapp: sets isapp
+        :param app: sets app
         :param name: sets name of window
         """
         ttk.Frame.__init__(self, name=name)
         self.pack(expand=Y, fill=BOTH)
         self.master.title('From Miami with Love')
-        self.isapp = isapp
+        self.app = app
         self._create_widgets()
    
     def get_inputs(self):
@@ -40,7 +39,7 @@ class ComboBoxDemo(ttk.Frame):
         """
         Wrapper method for creating necessary widgets
         """
-        if self.isapp:
+        if self.app:
             frontPage(self, "gui\SSUlogo1.png") # import and set image to frame
 
             buttons(self) # create and define(w/information) buttons
@@ -120,16 +119,16 @@ class buttons(ttk.Frame):
         sep = ttk.Separator(orient=HORIZONTAL)
  
         # Function of Exit button
-        dismissBtn = ttk.Button(text='Exit', command=self.master.quit)
+        exitBtn = ttk.Button(text='Exit', command=self.master.quit)
 
         # Function of see Data button
-        codeBtn = ttk.Button(text='See Data', command=self.master.quit)
-        codeBtn.focus()
+        dataBtn = ttk.Button(text='See Data', command=self.master.quit)
+        dataBtn.focus()
                  
         # position widgets in frame
         sep.grid(in_=self, row=0, columnspan=4, sticky=EW, pady=5)
-        codeBtn.grid(in_=self, row=1, column=0, sticky=E)
-        dismissBtn.grid(in_=self, row=1, column=1, sticky=E)
+        dataBtn.grid(in_=self, row=1, column=0, sticky=E)
+        exitBtn.grid(in_=self, row=1, column=1, sticky=E)
          
         # set resize constraints
         self.rowconfigure(0, weight=1)
@@ -141,10 +140,10 @@ class buttons(ttk.Frame):
 def run():
     """
     Executes GUI window
-    :return: inputs from GUI (ComboBoxDemo.get_inputs())
+    :return: inputs from GUI (ui.get_inputs())
     """
     root = Tk()
-    my_gui = ComboBoxDemo(root)
+    my_gui = ui(root)
     root.mainloop()
     return my_gui.get_inputs()
 
