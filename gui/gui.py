@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import * #@unusedImports
 from tkinter import ttk
 from data import get_cities #import city list from data.py which pulls from dataset 
 from tkinter.simpledialog import Dialog
@@ -17,7 +17,7 @@ class ComboBoxDemo(ttk.Frame):
 
     # get user choices from combobox drop down     
     def get_inputs(self):
-        return self.cb1.get(), self.cb2.get(), self.cb3.get()
+        return self.cb1.get(), self.cb2.get(), self.cb3.get(), self.cb4.get()
 
     # method calls other methods to create necessary widgets
     def _create_widgets(self):
@@ -34,10 +34,15 @@ class ComboBoxDemo(ttk.Frame):
         panel.pack(side=TOP, fill=BOTH, expand=Y) #resize with parent frame
             
         # 1st combobox, fixed year values
-        years = ('2013', '2014', '2015', '2016')
-        cbp1 = ttk.Labelframe(panel, text='Year')
+        years = ('2013', '2014', '2015', '2016', '2017')
+        cbp1 = ttk.Labelframe(panel, text='Select 2 years to compare')
         self.cb1 = ttk.Combobox(cbp1, values=years, state='readonly')
         self.cb1.pack(pady=5, padx=10)
+
+        # 4th combobox, fixed year values
+        cbp4 = ttk.Labelframe(panel, text='Year')
+        self.cb4 = ttk.Combobox(cbp1, values=years, state='readonly')
+        self.cb4.pack(pady=5, padx=10)
         
         # 2nd combobox, fixed values for data type 
         data = ('Humidity', 'Pressure', 'Temperature')
@@ -55,6 +60,7 @@ class ComboBoxDemo(ttk.Frame):
         cbp1.pack(in_=panel, side=TOP, pady=5, padx=10)
         cbp2.pack(in_=panel, side=TOP, pady=5, padx=10)
         cbp3.pack(in_=panel, side=TOP, pady=5, padx=10)
+        cbp4.pack(in_=panel, side=TOP, pady=5, padx=10)
 
 # Class handles image insertion     
 class frontPage(ttk.Frame):
