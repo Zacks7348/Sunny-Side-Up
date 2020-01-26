@@ -52,9 +52,6 @@ def graph(xdata=[], ydata=[], year=[], dataset=None, city=None):
     ax.xaxis.set_minor_locator(ticker.FixedLocator(minors))
     plt.xticks(rotation=90)
     plt.gcf().subplots_adjust(bottom=0.20)
-
-    #fig, ax2 = plt.subplots()
-
     plt.show()
 
 

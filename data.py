@@ -13,12 +13,6 @@ def fetch_data(filename, city, year=None):
     data = data[data["datetime"].str.contains(str(year))]
     return data
 
-def fetch_regression_data(filename, city, year):
-    data = fetch_data(filename, city, year)
-    X = data[data.columns[0]].to_list()
-    y = data[data.columns[1]].to_list()
-    return X, y
-
 def get_cities():
     data = pd.read_csv("kaggle/city_attributes.csv", usecols=["City"])
     return data[data.columns[0]].to_list()
