@@ -7,10 +7,10 @@ import inspect
 
 class ComboBoxDemo(ttk.Frame):
     
-    def __init__(self, isapp=True, name='comboboxdemo'):
+    def __init__(self, isapp=True, name='ssu'):
         ttk.Frame.__init__(self, name=name)
         self.pack(expand=Y, fill=BOTH)
-        self.master.title('Combobox Demo')
+        self.master.title('ssup')
         self.isapp = isapp
         self._create_widgets()
         
@@ -19,13 +19,7 @@ class ComboBoxDemo(ttk.Frame):
 
     def _create_widgets(self):
         if self.isapp:
-            mainPanel(self, 
-                     ["Sunny Side UP! ",
-                      "",
-                      "We have DataSets on 37 different cities, from 2013-2017 ",
-                      "The data includes humidity, pressure and temperature. ",
-                      "From the drop down below please select the desired information",
-                      "Output will be compiled into a graph "])
+            mainPanel(self, "gui\SSUlogo1.png")
 
             buttons(self)
         
@@ -57,13 +51,18 @@ class ComboBoxDemo(ttk.Frame):
         cbp3.pack(in_=panel, side=TOP, pady=5, padx=10)
     
 class mainPanel(ttk.Frame):
-    def __init__(self, master, msgtxt):
+    def __init__(self, master, filename):
         ttk.Frame.__init__(self, master)
+        self.master = master
         self.pack(side=TOP, fill=X)
-         
-        msg = Label(self, wraplength='4i', justify=LEFT)
-        msg['text'] = ''.join(msgtxt)
-        msg.pack(fill=X, padx=5, pady=5)
+        
+        load = Image.open(filename)
+        render = ImageTk.PhotoImage(load)
+        img = Label(self, image=render)
+        img.image = render
+        img.place(x=100, y=100)
+        img.pack(fill=X,padx=5,pady=5)
+        
          
 class buttons(ttk.Frame):
     def __init__(self, master):
