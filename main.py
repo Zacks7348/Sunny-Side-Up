@@ -18,7 +18,9 @@ y.append(temp2)
 temp1, temp2 = p.create_axes(data2, dataset)
 x.append(temp1)
 y.append(temp2)
+
 p.graph(x, y, years, dataset, city)
+
 
 
 

@@ -19,11 +19,16 @@ def average_list(list):
 def pad_floats(n):
     return float("{:.2f}".format(n))
 
-def map_dates(dates):
-    mapped_values = dates
-    for i in range(0, len(dates)):
-        mapped_values[i] = i
-    return mapped_values
+def map_dates(dates1, dates2):
+    md1 = []
+    md2 = []
+    offset = len(dates1)
+    for i in range(0, offset):
+        md1.append(i)
+        print(i)
+    for i in range(0, len(dates2)):
+        md2.append(i+offset)
+    return md1, md2
 
 def average_days(dates, data, data_type):
     def parse_data(value, data_type):
