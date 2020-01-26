@@ -29,7 +29,7 @@ pip install matplotlib
 
 ## Built With
 
-* [pandas](https://pandas.pydata.org/pandas-docs/stable/) - Data Analysis dependenct
+* [pandas](https://pandas.pydata.org/pandas-docs/stable/) - Data Analysis dependency
 * [numpy](https://docs.scipy.org/doc/numpy/reference/) - Data Management
 * [matplotlib](https://matplotlib.org/contents.html) - Graphing Dependency
 . 
