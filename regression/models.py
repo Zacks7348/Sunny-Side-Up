@@ -10,7 +10,6 @@ def linear_model(city, year, data=None, dataset=None):
     if data is None:
         X, y = fetch_regression_data(dataset, city, year)
     mapped_X = np.asarray(map_dates(X)).reshape(-1, 1)
-    for i in mapped_X
     lin = LinearRegression()
     lin.fit(mapped_X, y)
     graph_regression(mapped_X, y, dataset, lin)

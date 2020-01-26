@@ -18,3 +18,7 @@ def fetch_regression_data(filename, city, year):
     X = data.iloc[:, 0].values.reshape(-1, 1)
     y = data.iloc[:, 1].values.reshape(-1, 1)
     return X, y
+
+def get_cities():
+    data = pd.read_csv("kaggle/city_attributes.csv", usecols=["City"])
+    return data[data.columns[0]].to_list()
