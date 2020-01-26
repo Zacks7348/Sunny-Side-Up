@@ -25,28 +25,28 @@ def create_axes(data, data_type):
     return list(output.keys()), list(output.values())
 
 #Generates graph for passed data
-def graph(xdata=[], ydata=[], year=[], dataset=None, city=None):
+def graph(x1, x2, y1, y2, year1, year2, dataset, city):
     fig, ax = plt.subplots()
     if dataset == "Temperature":
-        plt.title("Temperature's in {}: {}".format(city, year[0]+" & "+year[1]))
+        plt.title("Temperature's in {}: {}".format(city, year1+" & "+year2))
         ax.set_ylabel("Temperature (F)")
     elif dataset == "Humidity":
-        plt.title("Humidity in {}: {}".format(city, year[0]+" & "+year[1]))
+        plt.title("Humidity in {}: {}".format(city, year1+" & "+year2))
         ax.set_ylabel("Humidity (water vapor g/m^3 of air)")
     elif dataset == "Pressure":
-        plt.title("Air Pressure in {}: {}".format(city, year[0]+" & "+year[1]))
+        plt.title("Air Pressure in {}: {}".format(city, year1+" & "+year2))
         ax.set_ylabel("Pressure (Pa)")
     ax.set_xlabel("Dates")
-    ax.plot(xdata[0], ydata[0], color = "blue", label=year[0])
-    ax.plot(xdata[1], ydata[1], color = "red", label=year[1])
+    ax.plot(x1, y1, color = "blue", label=year1)
+    ax.plot(x2, y2, color = "red", label=year2)
     ax.legend()
     majors = []
     minors = []
-    for date in xdata[0]:
+    for date in x1:
         if "01" in date:
-            majors.append(xdata[0].index(date))
+            majors.append(x1.index(date))
         else:
-            minors.append(xdata[0].index(date))
+            minors.append(x1.index(date))
 
     ax.xaxis.set_major_locator(ticker.FixedLocator(majors))
     ax.xaxis.set_minor_locator(ticker.FixedLocator(minors))
