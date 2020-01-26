@@ -1,13 +1,35 @@
-import numpy as np
-from sklearn.linear_model import LinearRegression
+"""
+Sunny Side Up
 
+Date Modified:  January 26, 20202
+Author: Zacks7348, Lvis47, Lfigu042
+"""
+
+LINE_WIDTH = 0.75
+ORANGE = "#F66733"
+PURPLE = "#522D80"
+
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
 from utils import parse_datetime, kelvin_to_farenheit, average_list, pad_floats
 
 def create_axes(data, data_type):
+    """
+    Takes in data and returns 2 lists, x-axis data (dates) and y-axis data.
+    Averages dates by day
+    :param data: data file to generate coordinates
+    :param data_type: Temperature, Humidity, or Pressure. Used for conversion logic
+    :return: 2 lists; x-axis - [dates] and y axis - [data]  
+    """
     def parse_data(value, data_type):
+        """
+        Helper function for converting/formatting data values
+        :param value: value to be converted/formatted
+        :param data_type: type of data being formatted
+        :return: formatted value
+        """
         if data_type == "Temperature":
             return kelvin_to_farenheit(value)
         return pad_floats(value)
@@ -26,6 +48,18 @@ def create_axes(data, data_type):
 
 #Generates graph for passed data
 def graph(x1, x2, y1, y2, year1, year2, dataset, city):
+    """
+    Produces plot using 2 sets of data
+    :param x1: x-values for graph 1
+    :param y1: y-values for graph 1
+    :param x2: x-values for graph 2
+    :param y2: y-values for graph 2
+    :param year1: year of graph 1 data
+    :param year2: year of graph 2 data
+    :param dataset: Type of data being graphed
+    :param city: City of data being graphed
+    :return: None
+    """
     fig, ax = plt.subplots()
     if dataset == "Temperature":
         plt.title("Temperature's in {}: {}".format(city, year1+" & "+year2))
@@ -37,8 +71,8 @@ def graph(x1, x2, y1, y2, year1, year2, dataset, city):
         plt.title("Air Pressure in {}: {}".format(city, year1+" & "+year2))
         ax.set_ylabel("Pressure (Pa)")
     ax.set_xlabel("Dates")
-    ax.plot(x1, y1, color = "blue", label=year1)
-    ax.plot(x2, y2, color = "red", label=year2)
+    ax.plot(x1, y1, color = ORANGE, label=year1, linewidth=LINE_WIDTH)
+    ax.plot(x2, y2, color = PURPLE, label=year2, linewidth=LINE_WIDTH)
     ax.legend()
     majors = []
     minors = []

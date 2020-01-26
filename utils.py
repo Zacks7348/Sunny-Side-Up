@@ -1,6 +1,15 @@
+"""
+Sunny Side Up
+
+Date Modified:  January 26, 20202
+Author: Zacks7348, Lvis47, Lfigu042
+"""
+
 import json
 import numpy as np
 
+'''
+'''
 def kelvin_to_farenheit (temp):
     return float("{:.2f}".format(((temp-273.1)/5)*9+32))
 
