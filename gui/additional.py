@@ -4,7 +4,7 @@ from tkinter.simpledialog import Dialog
 from PIL import Image, ImageTk
 import inspect
  
-class MsgPanel(ttk.Frame):
+class mainPanel(ttk.Frame):
     def __init__(self, master, msgtxt):
         ttk.Frame.__init__(self, master)
         self.pack(side=TOP, fill=X)
@@ -13,7 +13,7 @@ class MsgPanel(ttk.Frame):
         msg['text'] = ''.join(msgtxt)
         msg.pack(fill=X, padx=5, pady=5)
          
-class SeeDismissPanel(ttk.Frame):
+class buttons(ttk.Frame):
     def __init__(self, master):
         ttk.Frame.__init__(self, master)
         self.pack(side=BOTTOM, fill=X)          # resize with parent

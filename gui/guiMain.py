@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-from additional import MsgPanel,SeeDismissPanel
+from additional import mainPanel,buttons
 
 class ComboBoxDemo(ttk.Frame):
     
@@ -14,7 +14,7 @@ class ComboBoxDemo(ttk.Frame):
         
     def _create_widgets(self):
         if self.isapp:
-            MsgPanel(self, 
+            mainPanel(self, 
                      ["Sunny Side UP! ",
                       "",
                       "We have DataSets on 37 different cities, from 2013-2017 ",
@@ -22,7 +22,7 @@ class ComboBoxDemo(ttk.Frame):
                       "From the drop down below please select the desired information",
                       "Output will be compiled into a graph "])
 
-            SeeDismissPanel(self)
+            buttons(self)
         
         self._create_demo_panel()
         
