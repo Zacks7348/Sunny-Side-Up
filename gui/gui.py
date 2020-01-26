@@ -4,6 +4,7 @@ from data import get_cities #import city list from data.py which pulls from data
 from tkinter.simpledialog import Dialog
 from PIL import Image, ImageTk #for image input
 import inspect
+import asyncio
 
 # Main class to run program GUI, calls submethods
 class ComboBoxDemo(ttk.Frame):   
@@ -103,3 +104,4 @@ def run():
     my_gui = ComboBoxDemo(root)
     root.mainloop()
     return my_gui.get_inputs()
+
