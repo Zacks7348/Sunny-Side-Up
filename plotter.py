@@ -6,7 +6,7 @@ import matplotlib.ticker as ticker
 
 from utils import parse_datetime, kelvin_to_farenheit, average_list, pad_floats
 
-def create_axis(data, data_type):
+def create_axes(data, data_type):
     def parse_data(value, data_type):
         if data_type == "temperature":
             return kelvin_to_farenheit(value)
@@ -25,7 +25,7 @@ def create_axis(data, data_type):
     return list(output.keys()), list(output.values())
 
 #Generates graph for passed data
-def graph(xdata, ydata, dataset, city, year, average=False):
+def graph(xdata, ydata, dataset, city, year):
     fig, ax = plt.subplots()
     if dataset == "Temperature":
         plt.title("Temperature's in {}: {}".format(city, year))
@@ -50,4 +50,12 @@ def graph(xdata, ydata, dataset, city, year, average=False):
     ax.xaxis.set_minor_locator(ticker.FixedLocator(minors))
     plt.xticks(rotation=90)
     plt.gcf().subplots_adjust(bottom=0.20)
+    plt.show()
+
+def graph_regression(xdata, ydata, dataset, lin):
+    plt.scatter(xdata, ydata, color = "blue")
+    plt.plot(xdata, lin.predict(xdata), color = "red")
+    plt.title("Prediction Model")
+    plt.xlabel("Date")
+    plt.ylabel("dataset")
     plt.show()

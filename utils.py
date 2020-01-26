@@ -17,4 +17,13 @@ def average_list(list):
 
 def pad_floats(n):
     return float("{:.2f}".format(n))
+
+def map_dates(dates):
+    mapped_values = []
+    counter = 0
+    for d in dates:
+        mapped_values.append(counter)
+        counter += 1
+    return mapped_values
+
     
