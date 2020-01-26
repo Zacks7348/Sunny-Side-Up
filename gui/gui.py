@@ -1,3 +1,10 @@
+"""
+Sunny Side Up
+
+Date Modified:  January 26, 20202
+Author: Zacks7348, Lvis47, Lfigu042
+"""
+
 from tkinter import * #@unusedImports
 from tkinter import ttk
 from data import get_cities #import city list from data.py which pulls from dataset 
@@ -6,30 +13,45 @@ from PIL import Image, ImageTk #for image input
 import inspect
 import asyncio
 
-# Main class to run program GUI, calls submethods
-class ComboBoxDemo(ttk.Frame):   
+class ComboBoxDemo(ttk.Frame): 
+    """
+    Represents GUI window. Main class for all frame data
+    """  
     def __init__(self, isapp=True, name='ssu'):
+        """
+        Initializes GUI window
+        :param isapp: sets isapp
+        :param name: sets name of window
+        """
         ttk.Frame.__init__(self, name=name)
         self.pack(expand=Y, fill=BOTH)
         self.master.title('From Miami with Love')
         self.isapp = isapp
         self._create_widgets()
-
-    # get user choices from combobox drop down     
+   
     def get_inputs(self):
+        """
+        Returns values from drop-down inputs
+        :return: 4 Strings; year1, dataset, city, year2
+        """
         return self.cb1.get(), self.cb2.get(), self.cb3.get(), self.cb4.get()
 
-    # method calls other methods to create necessary widgets
     def _create_widgets(self):
+        """
+        Wrapper method for creating necessary widgets
+        """
         if self.isapp:
             frontPage(self, "gui\SSUlogo1.png") # import and set image to frame
 
             buttons(self) # create and define(w/information) buttons
         
         self._create_demo_panel()
-
-    # create frame with all information    
+   
     def _create_demo_panel(self):
+        """
+        Generates frame to be displayed on window.
+        Creates all drop-down inputs
+        """
         panel = Frame(self)
         panel.pack(side=TOP, fill=BOTH, expand=Y) #resize with parent frame
             
@@ -61,10 +83,17 @@ class ComboBoxDemo(ttk.Frame):
         cbp2.pack(in_=panel, side=TOP, pady=5, padx=10)
         cbp3.pack(in_=panel, side=TOP, pady=5, padx=10)
         cbp4.pack(in_=panel, side=TOP, pady=5, padx=10)
-
-# Class handles image insertion     
+     
 class frontPage(ttk.Frame):
+    """
+    Image Handler for window
+    """
     def __init__(self, master, filename):
+        """
+        Initializes image to be displayed on window
+        :param master: top-level window to display information
+        :param filename: path to image
+        """
         ttk.Frame.__init__(self, master)
         self.master = master
         self.pack(side=TOP, fill=X)
@@ -75,10 +104,16 @@ class frontPage(ttk.Frame):
         img.image = render
         img.place(x=100, y=100)
         img.pack(fill=X,padx=5,pady=5)
-        
-# Class handles functions of buttons on Gui frame        
+               
 class buttons(ttk.Frame):
+    """
+    Represents interactive buttons in window
+    """
     def __init__(self, master):
+        """
+        Initializes buttons
+        :param master: top-level window
+        """
         ttk.Frame.__init__(self, master)
         self.pack(side=BOTTOM, fill=X)
          
@@ -102,10 +137,12 @@ class buttons(ttk.Frame):
  
         # bind Escape to quit program
         self.winfo_toplevel().bind('<Escape>', quit )
- 
-
 
 def run():
+    """
+    Executes GUI window
+    :return: inputs from GUI (ComboBoxDemo.get_inputs())
+    """
     root = Tk()
     my_gui = ComboBoxDemo(root)
     root.mainloop()
