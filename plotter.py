@@ -25,37 +25,36 @@ def create_axes(data, data_type):
     return list(output.keys()), list(output.values())
 
 #Generates graph for passed data
-def graph(xdata, ydata, dataset, city, year):
+def graph(xdata=[], ydata=[], year=[], dataset=None, city=None):
     fig, ax = plt.subplots()
     if dataset == "Temperature":
-        plt.title("Temperature's in {}: {}".format(city, year))
+        plt.title("Temperature's in {}: {}".format(city, year[0]+" & "+year[1]))
         ax.set_ylabel("Temperature (F)")
     elif dataset == "Humidity":
-        plt.title("Humidity in {}: {}".format(city, year))
+        plt.title("Humidity in {}: {}".format(city, year[0]+" & "+year[1]))
         ax.set_ylabel("Humidity (water vapor g/m^3 of air)")
     elif dataset == "Pressure":
-        plt.title("Air Pressure in {}: {}".format(city, year))
+        plt.title("Air Pressure in {}: {}".format(city, year[0]+" & "+year[1]))
         ax.set_ylabel("Pressure (Pa)")
     ax.set_xlabel("Dates")
-    ax.plot(xdata, ydata)
+    ax.plot(xdata[0], ydata[0], color = "blue", label=year[0])
+    ax.plot(xdata[1], ydata[1], color = "red", label=year[1])
+    ax.legend()
     majors = []
     minors = []
-    for date in xdata:
+    for date in xdata[0]:
         if "01" in date:
-            majors.append(xdata.index(date))
+            majors.append(xdata[0].index(date))
         else:
-            minors.append(xdata.index(date))
+            minors.append(xdata[0].index(date))
 
     ax.xaxis.set_major_locator(ticker.FixedLocator(majors))
     ax.xaxis.set_minor_locator(ticker.FixedLocator(minors))
     plt.xticks(rotation=90)
     plt.gcf().subplots_adjust(bottom=0.20)
+
+    #fig, ax2 = plt.subplots()
+
     plt.show()
 
-def graph_regression(xdata, ydata, dataset, lin):
-    plt.scatter(xdata, ydata, color = "blue")
-    plt.plot(xdata, lin.predict(xdata), color = "red")
-    plt.title("Prediction Model")
-    plt.xlabel("Date")
-    plt.ylabel("dataset")
-    plt.show()
+
